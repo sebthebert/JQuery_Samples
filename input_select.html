@@ -1,0 +1,44 @@
+<html>
+<head></head>
+<body>
+<script src="jquery.min.js" type="text/javascript"></script>
+
+<h1>Selectors</h1>
+
+<select name="selector_name" id="selector_id">
+<option value="" selected>-- Your Country --</option>
+</select>
+
+<script type="text/javascript" charset="utf-8">
+
+$(document).ready(function() {
+
+	// Add 3 countries
+	$('#selector_id').append(new Option('France', 'fr', false, false));
+	$('#selector_id').append(new Option('Spain', 'es', false, false));
+	$('#selector_id').append(new Option('Germandy', 'de', false, false));
+
+	// Select option with value 'fr'
+	$('#selector_id').val('fr');
+	
+	// Get value from the selected option
+	var selected_value = $('#selector_id option:selected').val();
+	// Get text from the selected option
+	var selected_text = $('#selector_id option:selected').text();
+	
+	$('body').append("<br>Selected Value: " + selected_value + " - Selected Text: " + selected_text + " before unselect action.");
+	
+	// Unselect the selected option
+	$('#selector_id option:selected').removeAttr('selected');
+
+	// Remove option with value 'es'
+	$('#selector_id option[value=es]').remove();
+	
+	// Get number of options in Select
+	var nb_options = $('#selector_id>option').length;
+	$('body').append("<br>Number of options after removing 'es': " + nb_options);
+});
+</script>
+
+</body>
+</html>
